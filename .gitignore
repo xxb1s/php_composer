@@ -23,6 +23,8 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+/informix/clientsdk.tar.gz
+
 # CMake
 cmake-build-debug/
 cmake-build-release/
