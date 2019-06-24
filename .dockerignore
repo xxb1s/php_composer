@@ -1,0 +1,7 @@
+.gitignore
+.git/
+
+.idea/
+
+build.sh
+release.sh
