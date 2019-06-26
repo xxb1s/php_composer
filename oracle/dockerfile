@@ -1,0 +1,5 @@
+
+ADD oracle/instantclient.tar.gz /usr/local/
+
+RUN ./instantclient_install.sh && \
+    rm -rf instantclient_install.sh /tmp/*
