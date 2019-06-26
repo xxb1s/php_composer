@@ -1,24 +1,27 @@
-#! /bin/sh
+#! /bin/zsh
 
-set -ex
+#set -ex
 
-ORACLE_VERSION=$1
+#git pull
 
-git pull
+#docker run --rm -v "$PWD":/app treeder/bump patch
+#VERSION=`cat VERSION`
+#echo "version: ${VERSION}"
 
-docker run --rm -v "$PWD":/app treeder/bump patch
-VERSION=`cat VERSION`
-echo "version: ${VERSION}"
+for args in "$@"
+do
+  ar+=" $args"
+done
 
-./build.sh "$ORACLE_VERSION"
+./build.sh "${ar}"
 
-git add .
-git commit -m "version ${VERSION}"
-git tag -a "${VERSION}" -m "version ${VERSION}"
-git push
-git push --tags
+#git add .
+#git commit -m "version ${VERSION}"
+#git tag -a "${VERSION}" -m "version ${VERSION}"
+#git push
+#git push --tags
 
-docker tag 172.16.1.22:5000/laravel-dock:latest 172.16.1.22:5000/laravel-dock:${ORACLE_VERSION}
+#docker tag 172.16.1.22:5000/laravel-dock:latest 172.16.1.22:5000/laravel-dock:${ORACLE_VERSION}
 
-docker push 172.16.1.22:5000/laravel-dock:latest
-docker push 172.16.1.22:5000/laravel-dock:${ORACLE_VERSION}
+#docker push 172.16.1.22:5000/laravel-dock:latest
+#docker push 172.16.1.22:5000/laravel-dock:${ORACLE_VERSION}
