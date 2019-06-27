@@ -15,4 +15,4 @@ do
   esac
 done
 
-docker build -t  laravel-dock:latest .
+docker build -t laravel-dock:latest .
