@@ -1,3 +1,4 @@
+ENV LD_LIBRARY_PATH=/usr/local/instantclient/
 
 ADD oracle/instantclient.tar.gz /usr/local/
 
