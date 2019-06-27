@@ -15,4 +15,4 @@ do
   esac
 done
 
-docker build -t  172.16.1.22:5000/laravel-dock:latest .
+docker build -t  laravel-dock:latest .
