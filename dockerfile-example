@@ -16,7 +16,7 @@ RUN apt-get update && \
         gcc \
         zlib1g-dev \
         libtool && \
-    pecl install mcrypt-1.0.1 && \
+    pecl install mcrypt-1.0.2 && \
     pecl install xdebug && \
     pecl install memcached && \
     docker-php-ext-enable mcrypt \
