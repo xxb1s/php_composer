@@ -2,8 +2,6 @@ FROM php:7.3-fpm
 
 LABEL maintainer = "Carlos Brighton developer@brghton.dev"
 
-ADD VERSION .
-
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apt-get update && \
@@ -42,3 +40,5 @@ RUN ./composer_install.sh && \
     composer global require squizlabs/php_codesniffer && \
     ln -s ~/.composer/vendor/bin/phpcs /bin/phpcs && \
     rm -rf composer_install.sh /tmp/*
+
+ADD VERSION .
