@@ -4,8 +4,6 @@
 
 cp dockerfile-example Dockerfile
 
-echo $1
-
 for args in "$@"
 do
   case $args in
@@ -17,4 +15,4 @@ do
   esac
 done
 
-#docker build -t  172.16.1.22:5000/laravel-dock:latest .
+docker build -t  172.16.1.22:5000/laravel-dock:latest .
