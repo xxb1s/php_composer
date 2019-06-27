@@ -10,6 +10,7 @@ RUN apt-get update && \
         curl \
         wget \
         unzip \
+        libzip-dev \
         libmcrypt-dev \
         libmemcached-dev \
         libxml2-dev \
