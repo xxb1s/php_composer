@@ -21,7 +21,5 @@ git tag -a "${VERSION}" -m "version ${VERSION}"
 git push origin master
 git push --tags origin master
 
-docker tag laravel-dock:latest laravel-dock:${VERSION}
+docker tag nginx_php_composer:latest nginx_php_composer:${VERSION}
 
-#docker push 172.16.1.22:5000/laravel-dock:latest
-#docker push 172.16.1.22:5000/laravel-dock:${VERSION}
