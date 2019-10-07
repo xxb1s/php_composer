@@ -1,3 +1,8 @@
+# Servidor NGINX PHP-FPM Composer
+Imágen de Docker 
+
+
+
 ## ClientSDK Informix
 Por cuestiones de Github el clientsdk de informix ha sido dividido en partes, para juntarlo simplemente hay que proceder con las siguientes instrucciones:
 
