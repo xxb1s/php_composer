@@ -1,11 +1,7 @@
-# Servidor NGINX PHP-FPM Composer
-Imágen de Docker 
+# Servidor PHP-FPM Composer
+Imágen de Docker especial para recibir un proyecto Laravel >= 5
+### Especificaciones
+* PHP-FPM: 7.3
+* Composer: Latest
 
-
-
-## ClientSDK Informix
-Por cuestiones de Github el clientsdk de informix ha sido dividido en partes, para juntarlo simplemente hay que proceder con las siguientes instrucciones:
-
-Ubicarnos en la carpeta de informix y ejecutar el siguiente comando:
-
-`cat clientsdk.tar.gz.* > clientsdk.tar.gz`
+*Funciona bellisimo con una imágen NGINX*
