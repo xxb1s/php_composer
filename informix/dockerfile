@@ -1,6 +1,0 @@
-
-ADD informix/clientsdk.tar.gz /tmp/
-ADD informix/pdo_informix.tar.gz /tmp/
-
-RUN ./clientsdk_install.sh && \
-    rm -rf clientsdk_install.sh /tmp/*
