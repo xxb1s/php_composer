@@ -6,9 +6,10 @@ Imágen de Docker especial para recibir un proyecto Laravel >= 5
 * Composer: La [versión](https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md) más actual
 
 *Funciona bellisimo con un contenedor NGINX :heart: o sin él tambien :stuck_out_tongue_winking_eye:*
-
-
-
+\
+\
+\
+\
 *english / inglés*
 # PHP-FPM Composer Server
 Docker image for Laravel project >= 5
