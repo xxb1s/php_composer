@@ -2,6 +2,6 @@
 
 #set -ex
 
-cp dockerfile-example Dockerfile
+cp Dockerfile.example Dockerfile
 
-docker build -t nginx_php_composer:latest .
+docker build -t php_fpm_composer_tools:latest .

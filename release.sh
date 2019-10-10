@@ -16,5 +16,5 @@ git tag -a "${VERSION}" -m "version ${VERSION}"
 git push origin master
 git push --tags origin master
 
-docker tag nginx_php_composer:latest nginx_php_composer:${VERSION}
+docker tag php_fpm_composer_tools:latest php_fpm_composer_tools:${VERSION}
 
