@@ -10,8 +10,9 @@ COPY supervisord-app.conf /etc/supervisord.conf
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-COPY --from=node:13.2.0-alpine3.10 /usr/local/bin/nodejs /usr/local/bin/nodejs
-COPY --from=node:13.2.0-alpine3.10 /usr/local/bin/npm /usr/local/bin/npm
+# Probablemente sea una mala practica y algo peligroso pero la imagen va mas enfocada
+# en un ambiente de desarrollo que en una imagen productiva, aparte redujo un poco su peso XD
+COPY --from=node:13.2.0-alpine3.10 / / 
 
 RUN apk --update --no-cache add wget \
         curl \
