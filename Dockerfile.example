@@ -3,11 +3,15 @@
 #
 FROM php:7.3-fpm-alpine
 
-LABEL maintainer = "Carlos Brighton developer@brghton.dev"
+LABEL maintainer = "Carlos Brighton cbrghton@brghton.dev"
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY supervisord-app.conf /etc/supervisord.conf
+
 COPY --from=composer /usr/bin/composer /usr/bin/composer
+
+COPY --from=node:13.2.0-alpine3.10 /usr/local/bin/nodejs /usr/local/bin/nodejs
+COPY --from=node:13.2.0-alpine3.10 /usr/local/bin/npm /usr/local/bin/npm
 
 RUN apk --update --no-cache add wget \
         curl \
