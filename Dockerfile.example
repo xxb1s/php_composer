@@ -3,7 +3,7 @@
 #
 FROM php:7.3-fpm-alpine
 
-LABEL maintainer = "Carlos Brighton cbrghton@brghton.dev"
+LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY supervisord-app.conf /etc/supervisord.conf
@@ -40,6 +40,7 @@ RUN apk --update --no-cache add \
 	tokenizer \
 	xml \
 	bcmath \
+	soap \
 	zip && \
     pecl channel-update pecl.php.net && \
     pecl install memcached && \
