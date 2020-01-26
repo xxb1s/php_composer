@@ -3,23 +3,24 @@
 #
 FROM php:7.3-fpm-alpine
 
-LABEL maintainer = "Carlos Brighton cbrghton@brghton.dev"
+LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY supervisord-app.conf /etc/supervisord.conf
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Probablemente sea una mala practica y algo peligroso pero la imagen va mas enfocada
-# en un ambiente de desarrollo que en una imagen productiva, aparte redujo un poco su peso XD
-COPY --from=node:13.2.0-alpine3.10 / / 
-
-RUN apk --update --no-cache add wget \
-        curl \
-        grep \
-        build-base \
-        libmemcached-dev \
-        libmcrypt-dev \
+# TODO: Maybe need purified 😬
+# I preferred to get the node and npm package instead of using the image since all the libraries were joined
+RUN apk --update --no-cache add \
+    nodejs \
+	npm \
+    wget \
+    curl \
+    grep \
+    build-base \
+    libmemcached-dev \
+    libmcrypt-dev \
 	libxml2-dev \
 	imagemagick-dev \
 	pcre-dev \
@@ -39,6 +40,7 @@ RUN apk --update --no-cache add wget \
 	tokenizer \
 	xml \
 	bcmath \
+	soap \
 	zip && \
     pecl channel-update pecl.php.net && \
     pecl install memcached && \
@@ -46,7 +48,7 @@ RUN apk --update --no-cache add wget \
     pecl install imagick && \
     pecl install mcrypt-1.0.2 && \
     docker-php-ext-enable \
-        memcached \
+    memcached \
 	imagick \
 	mcrypt \
 	xdebug && \
