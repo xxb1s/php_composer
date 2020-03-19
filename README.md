@@ -11,6 +11,8 @@ Imágen de Docker especial para recibir un proyecto Laravel >= 5
 
 *Funciona bellisimo con un contenedor NGINX :heart: o sin él tambien :stuck_out_tongue_winking_eye:*
 
+*Ya tambien tenemos una versión con PHP [7.1](https://hub.docker.com/r/cbrghton/php_fpm_composer_tools/tags) :open_mouth:*
+
 ### Uso
 
 * Descarga la imágen desde [Docker HUB](https://hub.docker.com/r/cbrghton/php_fpm_composer_tools/)
