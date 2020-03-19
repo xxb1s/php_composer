@@ -1,7 +1,7 @@
 #
 # Base
 #
-FROM php:7.3-fpm-alpine
+FROM php:7.1-fpm-alpine
 
 LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
@@ -46,11 +46,9 @@ RUN apk --update --no-cache add \
     pecl install memcached && \
     pecl install xdebug && \
     pecl install imagick && \
-    pecl install mcrypt-1.0.2 && \
     docker-php-ext-enable \
     memcached \
 	imagick \
-	mcrypt \
 	xdebug && \
     composer global require squizlabs/php_codesniffer && \
     ln -s ~/.composer/vendor/bin/phpcs /usr/bin/phpcs && \
