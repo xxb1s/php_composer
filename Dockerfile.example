@@ -1,7 +1,7 @@
 #
 # Base
 #
-FROM php:7.3-fpm-alpine
+FROM php:7.2-fpm-alpine
 
 LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
@@ -13,46 +13,50 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # TODO: Maybe need purified 😬
 # I preferred to get the node and npm package instead of using the image since all the libraries were joined
 RUN apk --update --no-cache add \
-    nodejs \
-	npm \
-    wget \
-    curl \
-    grep \
-    build-base \
-    libmemcached-dev \
-    libmcrypt-dev \
-	libxml2-dev \
-	imagemagick-dev \
-	pcre-dev \
-	libtool \
-	make \
-	autoconf \
-	g++ \
-	cyrus-sasl-dev \
-	libgsasl-dev \
-	libzip-dev \
-	supervisor && \
-    docker-php-ext-install \
-	mysqli \
-	mbstring \
-	pdo \
-	pdo_mysql \
-	tokenizer \
-	xml \
-	bcmath \
-	soap \
-	zip && \
-    pecl channel-update pecl.php.net && \
-    pecl install memcached && \
-    pecl install xdebug && \
-    pecl install imagick && \
-    pecl install mcrypt-1.0.2 && \
-    docker-php-ext-enable \
-    memcached \
-	imagick \
-	mcrypt \
-	xdebug && \
-    composer global require squizlabs/php_codesniffer && \
+        nodejs \
+        npm \
+        wget \
+        curl \
+        grep \
+        build-base \
+        libmemcached-dev \
+        libmcrypt-dev \
+        libxml2-dev \
+        imagemagick-dev \
+        pcre-dev \
+        libtool \
+        make \
+        autoconf \
+        g++ \
+        cyrus-sasl-dev \
+        libgsasl-dev \
+        libzip-dev \
+        supervisor
+
+RUN docker-php-ext-install \
+        mysqli \
+        mbstring \
+        pdo \
+        pdo_mysql \
+        tokenizer \
+        xml \
+        bcmath \
+        soap \
+        zip
+
+RUN pecl channel-update pecl.php.net && \
+    pecl install memcached \
+        xdebug \
+        imagick \
+        mcrypt
+
+RUN docker-php-ext-enable \
+        memcached \
+        imagick \
+        mcrypt \
+        xdebug
+
+RUN composer global require squizlabs/php_codesniffer && \
     ln -s ~/.composer/vendor/bin/phpcs /usr/bin/phpcs && \
     rm -rf /var/cache/apk/* /tmp/* && \
     mkdir -p /var/www
