@@ -1,7 +1,7 @@
 #
 # Base
 #
-FROM php:7.2-fpm-alpine
+FROM php:7.2.31-fpm-alpine
 
 LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
