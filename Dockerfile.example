@@ -1,7 +1,7 @@
 #
 # Base
 #
-FROM php:7.2.31-fpm-alpine
+FROM php:7.2-fpm-alpine
 
 LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
@@ -13,6 +13,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # TODO: Maybe need purified 😬
 # I preferred to get the node and npm package instead of using the image since all the libraries were joined
 RUN apk --update --no-cache add \
+        git \
+        zsh \
         nodejs \
         npm \
         wget \
@@ -66,6 +68,5 @@ RUN composer global require squizlabs/php_codesniffer && \
 # Version
 #
 ADD VERSION .
-
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
