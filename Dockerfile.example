@@ -1,14 +1,14 @@
 #
 # Base
 #
-FROM php:7.3-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 LABEL maintainer="Carlos Brighton cbrghton@brghton.dev"
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY supervisord-app.conf /etc/supervisord.conf
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # TODO: Maybe need purified 😬
 # I preferred to get the node and npm package instead of using the image since all the libraries were joined
@@ -18,6 +18,8 @@ RUN apk --update --no-cache add \
     wget \
     curl \
     grep \
+    neovim \
+    bat \
     build-base \
     libmemcached-dev \
     libmcrypt-dev \
@@ -31,13 +33,15 @@ RUN apk --update --no-cache add \
 	cyrus-sasl-dev \
 	libgsasl-dev \
 	libzip-dev \
+    icu-data-full \
+    oniguruma \
+    oniguruma-dev \
 	supervisor && \
     docker-php-ext-install \
 	mysqli \
 	mbstring \
 	pdo \
 	pdo_mysql \
-	tokenizer \
 	xml \
 	bcmath \
 	soap \
@@ -46,7 +50,7 @@ RUN apk --update --no-cache add \
     pecl install memcached && \
     pecl install xdebug && \
     pecl install imagick && \
-    pecl install mcrypt-1.0.2 && \
+    pecl install mcrypt && \
     docker-php-ext-enable \
     memcached \
 	imagick \
